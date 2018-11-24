@@ -1,0 +1,59 @@
+﻿{
+  "name": "デバッグマップ",
+  "feild": [
+    [0,1,0,0,1,4,0,0,1,0],
+    [3,3,0,0,1,1,0,1,4,1],
+    [3,3,0,0,0,0,0,0,0,0],
+    [0,0,0,1,0,0,0,1,0,0],
+    [2,2,2,2,2,2,2,2,2,2],
+    [2,2,2,2,2,2,2,2,2,2]
+  ],
+  "chip": {
+    "0": [{"file": "grass","x": 0,"y": 0}],
+    "1": [{"file": "grass","x": 1,"y": 0}],
+    "2": [{"file": "grass","x": 2,"y": 0}],
+    "3": [{"file": "grass","x": 0,"y": 2}],
+    "4": [{"file": "grass","x": 0,"y": 0},{"file": "grass","x": 0,"y": 1}]
+  },
+  "object": [
+               {"file": "test","name": "streetLight","x": 3,"y": 2},
+               {"file": "test","name": "table","x": 6,"y": 3},
+               {"file": "test","name": "fenceLeft","x": 1,"y": 4},
+               {"file": "test","name": "fenceCenter","x": 2,"y": 4},
+               {"file": "test","name": "fenceRight","x": 3,"y": 4},
+               {"file": "test","name": "house","x": 6,"y": 10,"arg": {}}
+             ],
+  "event": [
+    {"x": 9,"y": 1,
+    "trigger": {
+                 "collider": {
+                   "colliderType": "box","width": 1,"height": 1
+                 },
+              "triggerBehaviour": [
+                   {"name": "player"}
+                 ],"destroy": true
+                     
+     },
+     "stay": {
+       "type": "list",
+       "events": [
+         {"event": "log","value": "デバッグログ","int": 2}
+       ]
+     }
+    },
+
+    {"x": 6,"y": 0,
+    "trigger": {
+       "collider": {
+         "colliderType": "box","width": 1,"height": 1
+       },"jack": [{"name": "player"}]
+      },
+       "enter": {
+        "type": "list",
+        "events": [
+         {"event": "log","value": "jack","int": 4}
+       ]
+      }
+     }
+  ]
+}

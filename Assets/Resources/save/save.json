@@ -1,0 +1,13 @@
+{
+  "name": "test",
+  "money": 1000,
+  "map": "debug",
+  "positionX": 3,
+  "positionY": 1,
+  "direction": "right",
+  "accompanying": [
+    {"name": "a1"},
+    { "name": "a2" },
+    {"name": "a3"}
+  ]
+}

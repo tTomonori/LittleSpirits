@@ -1,0 +1,116 @@
+{
+  "streetLight": {
+    "sprite": {
+      "file": "streetLight",
+      "x": 0,
+      "y": 0,
+      "width": 1,
+      "height": 3,
+      "animation": {
+        "direction": "horizontal",
+        "frame": 3,
+        "interval": 0.1
+      }
+    },
+    "attribute": "accessory",
+    "collider": {
+      "colliderType": "box",
+      "colliderSizeX": 0.3,
+      "colliderSizeY": 0.3
+    }
+  },
+  "table": {
+    "sprite": {
+      "file": "table",
+      "x": 0,
+      "y": 0,
+      "width": 2,
+      "height": 3,
+      "zIndex": 1.65
+    },
+    "attribute": "accessory",
+    "collider": {
+      "colliderType": "box",
+      "colliderSizeX": 1.8,
+      "colliderSizeY": 1.65,
+      "colliderOffsetY": 0.1
+    }
+  },
+  "fenceLeft": {
+    "sprite": {
+      "file": "fence",
+      "x": 0,
+      "y": 0,
+      "width": 1,
+      "height": 1
+    },
+    "attribute": "accessory",
+    "collider": {
+      "colliderType": "box",
+      "colliderSizeX": 0.9,
+      "colliderSizeY": 0.1,
+      "colliderOffsetX": 0.05 
+    }
+  },
+  "fenceCenter": {
+    "sprite": {
+      "file": "fence",
+      "x": 1,
+      "y": 0,
+      "width": 1,
+      "height": 1
+    },
+    "attribute": "accessory",
+    "collider": {
+      "colliderType": "box",
+      "colliderSizeX": 1.0,
+      "colliderSizeY": 0.1 
+    }
+  },
+  "fenceRight": {
+    "sprite": {
+      "file": "fence",
+      "x": 2,
+      "y": 0,
+      "width": 1,
+      "height": 1
+    },
+    "attribute": "accessory",
+    "collider": {
+      "colliderType": "box",
+      "colliderSizeX": 0.9,
+      "colliderSizeY": 0.1,
+      "colliderOffsetX": -0.05 
+    }
+  },
+  "house": {
+    "tile": {
+      "file": "house",
+      "tiles": [
+      [[0,0],[1,0],[2,0],[2,0],[2,0],[3,0],[4,0]],
+      [[0,1],[1,1],[2,1],[2,1],[2,1],[3,1],[4,1]],
+      [[0,2],[1,2],[2,2],[2,2],[2,2],[3,2],[4,2]],
+      [[0,3],[1,3],[2,3],[2,3],[2,3],[3,3],[4,3]],
+      [[-1 ],[1,4],[3,4],[3,4],[2,4],[4,4],[-1 ]],
+      [[-1 ],[1,5],[3,5],[3,5],[2,5],[4,5],[-1 ]]
+      ]
+    },
+    "attribute": "accessory",
+    "collider": {
+      "colliderType": "polygon",
+      "points": [
+      [-2.5,0.0],[-2.5,5.0],[2.5,5.0],[2.5,0.0],[1.5,0.0],[1.5,1.2],[0.5,1.2],[0.5,0.0]
+      ]
+    },
+    "objectCategory": {
+      "category": "house",
+      "door": {
+        "file": "house",
+        "x": 0.0,
+        "y": 4.8,
+        "width": 1.0,
+        "height": 1.2
+      }
+    }
+  }
+}

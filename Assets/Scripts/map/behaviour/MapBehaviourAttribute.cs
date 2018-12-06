@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
+///マップ属性
 public class MapBehaviourAttribute {
     private Attribute mAttribute;
     public Attribute attribute{
@@ -47,13 +48,21 @@ public class MapBehaviourAttribute {
         if (mAttribute < Attribute.empty) return AttributeType.speaker;
         return AttributeType.mapEvent;
     }
+    static public AttributeType getAttributeType(Attribute aAttribute){
+        if (aAttribute < Attribute.ghost) return AttributeType.trout;
+        if (aAttribute < Attribute.empty) return AttributeType.speaker;
+        return AttributeType.mapEvent;
+    }
     //属性を重ねる
-    public void pile(MapBehaviourAttribute aAttribute){
+    public void pile(Attribute aAttribute){
         //重ねられるのは地形のみ
         if (getAttributeType() != AttributeType.trout) return;
-        if (aAttribute.getAttributeType() != AttributeType.trout) return;
-        if (mAttribute < aAttribute.attribute)
-            mAttribute = aAttribute.attribute;
+        if (MapBehaviourAttribute.getAttributeType(aAttribute) != AttributeType.trout) return;
+        if (mAttribute < aAttribute)
+            mAttribute = aAttribute;
+    }
+    public void pile(string aAttribute){
+        pile((Attribute)Enum.Parse(typeof(Attribute), aAttribute, true));
     }
     //引数の属性を通過できるか
     public bool canPass(MapBehaviourAttribute aAttribute){

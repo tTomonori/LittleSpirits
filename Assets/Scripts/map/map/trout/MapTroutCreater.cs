@@ -3,26 +3,41 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public static class MapTroutCreater {
+    ///マスの画像があるフォルダのパス
+    static public readonly string kDirPath = "Sprites/map/ground";
+    ///マスのデータ
+    static private Dictionary<string, Arg> mSpriteData = new Dictionary<string, Arg>();
+    ///マスのデータを読み込む
+    static public Arg loadMasData(string aFileName, int aX, int aY){
+        string tKey = aX.ToString() + "," + aY.ToString();
+        //地形データファイル読み込み
+        if (!mSpriteData.ContainsKey(aFileName)){
+            mSpriteData[aFileName] = new Arg(MyJson.deserializeResourse(kDirPath + "/" + aFileName + "C"));
+        }
+        return mSpriteData[aFileName].get<Arg>(tKey);
+    }
+    ///マス生成
     static public MapTrout create(List<Dictionary<string,object>> aChip){
         MapTrout tTrout = MyBehaviour.create<MapTrout>();
+        List<Arg> tMasDataList = new List<Arg>();//マスのタイル情報リスト
+        MapAttributeBehaviour tAttributeBehaviour = tTrout.gameObject.AddComponent<MapAttributeBehaviour>();//マップ属性
+        tAttributeBehaviour.setAttribute(MapBehaviourAttribute.Attribute.none);//マップ属性の初期値をnoneに設定
+        //マスのタイル情報を読んでリストに
         foreach(Dictionary<string,object> tData in aChip){
-            MapTile tTile = createTile((string)tData["file"], (int)tData["x"], (int)tData["y"]);
-            tTrout.addTile(tTile);
+            Arg tMasData = loadMasData((string)tData["file"], (int)tData["x"], (int)tData["y"]);
+            tMasData.set("file", (string)tData["file"]);
+            tMasDataList.Add(tMasData);
+            //マップ属性を重ねる
+            tAttributeBehaviour.mAttribute.pile(tMasData.get<string>("attribute"));
+        }
+        //画像設定
+        ChildSprite.addSpriteObject(tTrout.gameObject, new Arg(new Dictionary<string,object>(){{"pile",tMasDataList}}), kDirPath);
+        //collider設定
+        if(tAttributeBehaviour.mAttribute.attribute!=MapBehaviourAttribute.Attribute.flat&&
+           tAttributeBehaviour.mAttribute.attribute != MapBehaviourAttribute.Attribute.none){
+            BoxCollider2D tBox=tTrout.gameObject.AddComponent<BoxCollider2D>();
+            tBox.size = new Vector2(1, 1);
         }
         return tTrout;
-    }
-    static public MapTile createTile(string aFileName,int aX,int aY){
-        MapBehaviourAttribute tAttribute;
-        float tInterval;
-        List<Sprite> tSprites = MapTroutImageLoader.load(aFileName, aX, aY, out tAttribute, out tInterval);
-        MapTile tTile = MyBehaviour.create<MapTile>();
-        if(tInterval>0){
-            //アニメーションあり
-            tTile.init(tSprites, tInterval, tAttribute);
-        }else{
-            //アニメーションなし
-            tTile.init(tSprites[0], tAttribute);
-        }
-        return tTile;
     }
 }

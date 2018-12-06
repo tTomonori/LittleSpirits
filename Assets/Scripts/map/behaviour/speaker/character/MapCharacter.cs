@@ -14,6 +14,8 @@ public partial class MapCharacter : MapSpeaker {
     private string mName;
     //キャラの向き
     public Direction mDirection;
+    ///移動コンポーネント
+    private MapBehaviourMoveComponent mMoveComponent;
     ///初期化
     public void init(string aAiName,Dictionary<string,List<Sprite>> aSprites,Vector2 aColliderSize,Direction? aDirection=null,string aName=""){
         if(mSprites!=null)return;
@@ -37,11 +39,13 @@ public partial class MapCharacter : MapSpeaker {
         BoxCollider2D tCollider = gameObject.AddComponent<BoxCollider2D>();
         tCollider.offset = new Vector2(0, ((Vector2)aColliderSize).y / 2);
         tCollider.size = aColliderSize;
-        mCollider = tCollider;
-        mBehaviourAttribute = new MapBehaviourAttribute(MapBehaviourAttribute.Attribute.character);
+        //マップ属性
+        gameObject.AddComponent<MapAttributeBehaviour>().setAttribute(MapBehaviourAttribute.Attribute.character);
         //rigidbody
         Rigidbody2D tRigid = gameObject.AddComponent<Rigidbody2D>();
         tRigid.bodyType = RigidbodyType2D.Kinematic;
+        //移動コンポーネント
+        mMoveComponent = gameObject.AddComponent<MapBehaviourMoveComponent>();
     }
     ///画像変更
     private void changeImage(string aName){

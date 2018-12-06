@@ -12,16 +12,16 @@ public class MapTrout : MapBehaviour {
         mCollider.size = new Vector2(1, 1);
     }
     ///マスの画像を追加
-    public void addTile(MapTile aTile){
-        mTiles.Add(aTile);
-        aTile.transform.parent = this.gameObject.transform;
-        aTile.transform.localPosition = new Vector3(0, 0, 0);
-        //タイルを重ねて地形属性更新
-        mBehaviourAttribute.pile(aTile.attribute);
-        if (mBehaviourAttribute.attribute==MapBehaviourAttribute.Attribute.flat
-            || mBehaviourAttribute.attribute==MapBehaviourAttribute.Attribute.bridge)
-            mCollider.enabled = false;
-        else
-            mCollider.enabled = true;
-    }
+    //public void addTile(MapTile aTile){
+    //    mTiles.Add(aTile);
+    //    aTile.transform.parent = this.gameObject.transform;
+    //    aTile.transform.localPosition = new Vector3(0, 0, 0);
+    //    //タイルを重ねて地形属性更新
+    //    mBehaviourAttribute.pile(aTile.attribute);
+    //    if (mBehaviourAttribute.attribute==MapBehaviourAttribute.Attribute.flat
+    //        || mBehaviourAttribute.attribute==MapBehaviourAttribute.Attribute.bridge)
+    //        mCollider.enabled = false;
+    //    else
+    //        mCollider.enabled = true;
+    //}
 }

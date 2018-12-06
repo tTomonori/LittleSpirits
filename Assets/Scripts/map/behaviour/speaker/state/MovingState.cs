@@ -12,7 +12,8 @@ partial class MapCharacter{
             Direction tDirection = new Direction(aVector);
             parent.mDirection = tDirection;
             parent.changeImage("move" + tDirection.str);
-            parent.move(aVector, 0.1f);
+            //parent.move(aVector, 0.1f);
+            parent.mMoveComponent.move(aVector, 0.1f);
         }
         public override void update(){
             if(mMoveFlag){

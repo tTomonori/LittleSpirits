@@ -38,34 +38,7 @@ public struct Arg{
         return arg.Contains(key);
         //return arg.ContainsKey(key);
     }
+    public void set(string key,object value){
+        arg[key] = value;
+    }
 }
-
-
-
-
-
-//public struct Arg{
-//    private Dictionary<string, object> arg;
-//    public Arg(Dictionary<string, object> a){
-//        arg = a;
-//    }
-//    public Arg(object a = null){
-//        arg = new Dictionary<string, object>();
-//    }
-//    static public Arg loadJson(string fileName){
-//        return new Arg(MyJson.deserializeFile(fileName));
-//    }
-//    public T get<T>(string key){
-//        if (arg[key] is T)
-//            return (T)arg[key];
-//        if(!(this is T)){
-//            throw new Exception(arg[key].GetType().ToString()+"型を指定した型にキャストできないよ");
-//        }
-//        Arg a = new Arg((Dictionary<string, object>)arg[key]);
-//        arg[key] = a;
-//        return (T)arg[key];
-//    }
-//    public bool ContainsKey(string key){
-//        return arg.ContainsKey(key);
-//    }
-//}

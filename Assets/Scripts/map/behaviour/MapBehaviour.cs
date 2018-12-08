@@ -25,10 +25,10 @@ public class MapBehaviour : MyBehaviour {
         Vector2 tMapPosition = mapPosition;
         mapPosition = new Vector2(tMapPosition.x + aDirection.x, tMapPosition.y + aDirection.y);
     }
-     virtual public MapPassType confirmPassType(MapBehaviour aBehaviour){
-        if (aBehaviour.mBehaviourAttribute.canPass(mBehaviourAttribute)) return MapPassType.passing;
-        else return MapPassType.collision;
-    }
+    // virtual public MapPassType confirmPassType(MapBehaviour aBehaviour){
+    //    if (aBehaviour.mBehaviourAttribute.canPass(mBehaviourAttribute)) return MapPassType.passing;
+    //    else return MapPassType.collision;
+    //}
 }
 public enum MapPassType{
     passing,collision,stop

@@ -29,8 +29,8 @@ public struct Arg{
                 return (T)o;
             }else if(new List<Arg>() is T){
                 List<Arg> o = new List<Arg>();
-                foreach(Dictionary<string, object> d in (List<Dictionary<string, object>>)arg[key]){
-                    o.Add(new Arg(d));
+                foreach(object d in (IList)arg[key]){
+                    o.Add(new Arg((IDictionary)d));
                 }
                 return (T)(object)o;
             }

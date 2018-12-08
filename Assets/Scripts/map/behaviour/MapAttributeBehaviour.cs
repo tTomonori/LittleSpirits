@@ -13,7 +13,14 @@ public class MapAttributeBehaviour : MonoBehaviour {
     }
     ///引数のマップ属性が自分を通過できるか
     virtual public MapPassType confirmPassType(MapAttributeBehaviour aBehaviour){
-        if (aBehaviour.mAttribute.canPass(mAttribute)) return MapPassType.passing;
-        else return MapPassType.collision;
+        if (mAttribute.getAttributeType() == MapBehaviourAttribute.AttributeType.mapEvent){
+            //自分がeventのcolliderの時
+            return gameObject.GetComponent<MapEventTrigger>().confirmPassType(aBehaviour);
+        }
+        else{
+            //自分がeventのcollider以外の時
+            if (aBehaviour.mAttribute.canPass(mAttribute)) return MapPassType.passing;
+            else return MapPassType.collision;
+        }
     }
 }

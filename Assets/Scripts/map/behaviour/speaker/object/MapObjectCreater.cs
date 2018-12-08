@@ -20,6 +20,7 @@ public static class MapObjectCreater {
             string tPath = HandleString.cutOff(aFileName, "/");
             tPath = (tPath == "") ? MapObjectCreater.kDirPath : MapObjectCreater.kDirPath + "/" + tPath;
             Arg tData = tObjectData.get<Arg>("sprite");
+            //pivotYが設定されていないなら0に設定
             if (!tData.ContainsKey("pivotY")) tData.set("pivotY", 0f);
             //スプライトセット
             ChildSprite.addSpriteObject(tMapObject.gameObject, tData, tPath);
@@ -30,6 +31,7 @@ public static class MapObjectCreater {
         }
         //collider設定
         if(tObjectData.ContainsKey("collider")){
+            Arg tColliderData = tObjectData.get<Arg>("collider");
             ColliderInstaller.addCollider(tMapObject.gameObject, tObjectData.get<Arg>("collider"));
         }
         //category

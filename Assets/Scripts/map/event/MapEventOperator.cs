@@ -21,6 +21,6 @@ public class MapEventOperator {
     private void getMessage(Message aMessage){
         if (aMessage.name != "mapEvent") return;
         MapEvent tEvent = aMessage.getParameter<MapEvent>("event");
-        tEvent.run((a) => { });
+        tEvent.run(mMap, () => { });
     }
 }

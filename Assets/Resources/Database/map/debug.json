@@ -25,35 +25,54 @@
              ],
   "event": [
     {"x": 9,"y": 1,
-    "trigger": {
-                 "collider": {
-                   "colliderType": "box","width": 1,"height": 1
-                 },
-              "triggerBehaviour": [
-                   {"name": "player"}
-                 ],"destroy": true
-                     
+     "collider": {
+     "colliderType": "box","colliderSizeX": 1,"colliderSizeY": 1
      },
+     "trigger": {
+       "passType": "passing",
+       "terms": [ { "name": "player" } ]
+     },
+     "destroy": false,
      "stay": {
-       "type": "list",
+       "jack": ["player"],
        "events": [
-         {"event": "log","value": "デバッグログ","int": 2}
+         {"event": "log","value": "デバッグログ"}
        ]
      }
     },
-
+    //////////
     {"x": 6,"y": 0,
-    "trigger": {
        "collider": {
-         "colliderType": "box","width": 1,"height": 1
-       },"jack": [{"name": "player"}]
-      },
+         "colliderType": "box","colliderSizeX": 1,"colliderSizeY": 1
+       },
+       "trigger": {
+         "passType": "stop",
+           "terms": [{"name": "player"}]
+       },
+       "destroy": false,
        "enter": {
-        "type": "list",
-        "events": [
-         {"event": "log","value": "jack","int": 4}
+         "jack": ["player"],
+         "events": [
+         {"event": "log","value": "jack"}
        ]
       }
+     },
+    //////////
+    {"x": 0,"y": 0,
+     "collider": {
+       "colliderType": "box","colliderSizeX": 1,"colliderSizeY": 1
+     },
+     "trigger": {
+       "passType": "stop",
+       "terms": [{"name": "player"}]
+     },
+     "destroy": false,
+     "enter": {
+       "jack": ["player"],
+       "events": [
+         {"event": "text","text": "テスト"}
+       ]
      }
+    }
   ]
 }

@@ -27,6 +27,12 @@ public struct Arg{
                 object o = (int)(float)arg[key];
                 Debug.Log("Arg : float型の値をint型に変換しちゃってるけどいいの？");
                 return (T)o;
+            }else if(new List<Arg>() is T){
+                List<Arg> o = new List<Arg>();
+                foreach(Dictionary<string, object> d in (List<Dictionary<string, object>>)arg[key]){
+                    o.Add(new Arg(d));
+                }
+                return (T)(object)o;
             }
             throw new Exception(arg[key].GetType().ToString() + "型を指定した型にキャストできないよ");
         }

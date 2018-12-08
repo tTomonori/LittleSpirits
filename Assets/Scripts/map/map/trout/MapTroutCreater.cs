@@ -17,15 +17,15 @@ public static class MapTroutCreater {
         return mSpriteData[aFileName].get<Arg>(tKey);
     }
     ///マス生成
-    static public MapTrout create(List<Dictionary<string,object>> aChip){
+    static public MapTrout create(List<Arg> aChip){
         MapTrout tTrout = MyBehaviour.create<MapTrout>();
         List<Arg> tMasDataList = new List<Arg>();//マスのタイル情報リスト
         MapAttributeBehaviour tAttributeBehaviour = tTrout.gameObject.AddComponent<MapAttributeBehaviour>();//マップ属性
         tAttributeBehaviour.setAttribute(MapBehaviourAttribute.Attribute.none);//マップ属性の初期値をnoneに設定
         //マスのタイル情報を読んでリストに
-        foreach(Dictionary<string,object> tData in aChip){
-            Arg tMasData = loadMasData((string)tData["file"], (int)tData["x"], (int)tData["y"]);
-            tMasData.set("file", (string)tData["file"]);
+        foreach(Arg tData in aChip){
+            Arg tMasData = loadMasData(tData.get<string>("file"), tData.get<int>("x"), tData.get<int>("y"));
+            tMasData.set("file", tData.get<string>("file"));
             tMasDataList.Add(tMasData);
             //マップ属性を重ねる
             tAttributeBehaviour.mAttribute.pile(tMasData.get<string>("attribute"));

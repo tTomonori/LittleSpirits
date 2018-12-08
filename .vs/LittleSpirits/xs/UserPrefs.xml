@@ -1,5 +1,12 @@
 ﻿<Properties StartupConfiguration="{8B06F6C0-BFEB-6300-9B25-A6448910FFF2}|">
-  <MonoDevelop.Ide.Workbench />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/map/event/MapEventTriggerCreater.cs">
+    <Files>
+      <File FileName="Assets/Scripts/map/map/LocalMapCreater.cs" Line="42" Column="15" />
+      <File FileName="Assets/Scripts/map/event/MapEventOperator.cs" Line="11" Column="6" />
+      <File FileName="Assets/Scripts/map/event/MapEventTrigger.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/map/event/MapEventTriggerCreater.cs" Line="7" Column="43" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>

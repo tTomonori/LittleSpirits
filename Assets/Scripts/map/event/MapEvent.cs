@@ -57,6 +57,11 @@ public class MapEvent {
                 Debug.Log(aEvent.get<string>("value"));
                 aCallback();
                 break;
+            case "text"://会話イベント
+                ConversationWindow.show(aEvent, () =>{
+                    aCallback();
+                });
+                break;
             default:
                 throw new Exception("MapEvent : 「"+aEvent.get<string>("event")+"」ってどんなイベント？");
         }

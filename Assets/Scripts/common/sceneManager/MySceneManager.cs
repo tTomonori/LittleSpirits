@@ -2,13 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System;
 
 public static class MySceneManager {
     static MySceneManager(){
         //新しくシーンを読み込んだ時
         SceneManager.sceneLoaded += (aScene, aMode) => {
+            SceneData tData = findSceneData(aScene.name);
             //SceneDataにSceneを記憶
-            MySceneManager.findSceneData(aScene.name).scene = aScene;
+            tData.scene = aScene;
             //カメラノードのAudioListenerを消す
             foreach (GameObject tObject in aScene.GetRootGameObjects()){
                 AudioListener tAudioListener = tObject.GetComponent<AudioListener>();
@@ -17,27 +19,39 @@ public static class MySceneManager {
                     return;
                 }
             }
+            //開いた時のcallback
+            if (tData.opened != null)
+                tData.opened(aScene);
+        };
+        //シーンが閉じられた時
+        SceneManager.sceneUnloaded += (aScene) =>{
+            string tName = aScene.name;
+            for (int i = 0; i < mScenes.Count; i++){
+                SceneData tData = mScenes[i];
+                if (tData.name != tName) continue;
+                mScenes.RemoveAt(i);
+                //閉じた時のcallback
+                tData.closed(tData.arg);
+            }
         };
     }
     public class SceneData{
-        public SceneData(string aName,Arg aArg,SendArg aCallback){
+        public SceneData(string aName,Arg aArg,Action<Scene> aOpened=null,Action<Arg> aClosed=null){
             name = aName;
             arg = aArg;
-            callback = aCallback;
+            opened = aOpened;
+            closed = aClosed;
             pausedBehaviour = new List<MonoBehaviour>();
         }
-        public string name;
-        public Arg arg;
-        public SendArg callback;
-        public Scene scene;
-        public List<MonoBehaviour> pausedBehaviour;
+        public string name;//シーンの名前
+        public Arg arg;//開いたシーンに渡す引数
+        public Action<Scene> opened;//シーンを開いた時のcallback
+        public Action<Arg> closed;//シーンを閉じた時のcallback
+        public Scene scene;//開いたシーン
+        public List<MonoBehaviour> pausedBehaviour;//停止させたbehaviour
     }
     ///開いている全てのシーン
     static private List<SceneData> mScenes = new List<SceneData>();
-    ///最前面にあるシーン
-    static private SceneData mFrontmostScene{
-        get { return mScenes[mScenes.Count - 1]; }
-    }
     ///指定した名前のシーンのデータを探す
     static private SceneData findSceneData(string aName){
         foreach(SceneData tData in mScenes){
@@ -48,20 +62,23 @@ public static class MySceneManager {
         throw new KeyNotFoundException("SceneManager:「"+aName+"」なんて名前のシーンはないよ");
     }
     ///シーンを開く
-    static public void openScene(string aName, Arg aArg, SendArg aCallback){
-        SceneData tData=new SceneData(aName,aArg,aCallback);
+    static public void openScene(string aName, Arg aArg, Action<Scene> aOpened = null, Action<Arg> aClosed = null){
+        SceneData tData=new SceneData(aName,aArg,aOpened,aClosed);
         mScenes.Add(tData);
-        SceneManager.LoadSceneAsync(aName, LoadSceneMode.Additive);
+        //SceneManager.LoadSceneAsync(aName, LoadSceneMode.Additive);
+        SceneManager.LoadScene(aName,LoadSceneMode.Additive);
     }
     ///シーンを閉じる
     static public void closeScene(string aName,Arg aArg){
-        SceneData tData = mFrontmostScene;
-        if(tData.name != aName)
-           throw new KeyNotFoundException("SceneManager:最前面でないシーン「" + aName + "」は閉じちゃダメ");
-        SendArg tCallback = tData.callback;
-        mScenes.RemoveAt(mScenes.Count - 1);
-        SceneManager.UnloadSceneAsync(aName);
-        tCallback(aArg);
+        for (int i = 0; i < mScenes.Count;i++){
+            SceneData tData = mScenes[i];
+            if (tData.name != aName) continue;
+            tData.arg = aArg;
+            SceneManager.UnloadSceneAsync(aName);
+            //SceneManager.UnloadScene(aName);
+            return;
+        }
+        throw new KeyNotFoundException("SceneManager:「" + aName + "」なんて名前のシーンはないから閉じれない");
     }
     ///引数を受け取る
     static public Arg getArg(string aName){

@@ -58,7 +58,7 @@
       }
      },
     //////////
-    {"x": 0,"y": 0,
+    {"x": 0,"y": 6,
      "collider": {
        "colliderType": "box","colliderSizeX": 1,"colliderSizeY": 1
      },
@@ -66,11 +66,11 @@
        "passType": "stop",
        "terms": [{"name": "player"}]
      },
-     "destroy": false,
+     "destroy": true,
      "enter": {
        "jack": ["player"],
        "events": [
-         {"event": "text","text": "テスト"}
+         {"event": "text","name": "システム", "text": "テスト"}
        ]
      }
     }

@@ -9,7 +9,7 @@ public class AppMain : MyBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        MySceneManager.openScene("title", new Arg(), titleCallback);
+        MySceneManager.openScene("title", new Arg(), null, titleCallback);
 
         ////////////
 

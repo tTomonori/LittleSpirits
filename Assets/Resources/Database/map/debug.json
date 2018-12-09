@@ -50,7 +50,7 @@
            "terms": [{"name": "player"}]
        },
        "destroy": false,
-       "enter": {
+       "stay": {
          "jack": ["player"],
          "events": [
          {"event": "log","value": "jack"}
@@ -70,9 +70,32 @@
      "enter": {
        "jack": ["player"],
        "events": [
-         {"event": "text","name": "システム", "text": "テスト"}
+         {"event": "text","name": "システム", "text": "テスト 一度だけ表示するよ"}
        ]
      }
+    },
+    //////////
+    {"x": 0,"y": 0,
+      "collider": {
+        "colliderType": "box",
+        "colliderSizeX": 1,
+        "colliderSizeY": 1
+      },
+      "trigger": {
+        "passType": "stop",
+        "terms": [ { "name": "player" } ]
+      },
+      "destroy": false,
+      "enter": {
+        "jack": [ "player" ],
+        "events": [
+          {"event": "text","type": "list","list": [
+             {"name": "system","text": "画面を押して次のメッセージ"},
+             {"name": "system","text": "表示されてる？"},
+             {"text": "次で閉じるよ"}
+           ]}
+        ]
+      }
     }
   ]
 }

@@ -16,7 +16,7 @@ public static class MySceneManager {
                 AudioListener tAudioListener = tObject.GetComponent<AudioListener>();
                 if (tAudioListener != null){
                     GameObject.Destroy(tAudioListener);
-                    return;
+                    break;
                 }
             }
             //開いた時のcallback
@@ -65,15 +65,20 @@ public static class MySceneManager {
     static public void openScene(string aName, Arg aArg, Action<Scene> aOpened = null, Action<Arg> aClosed = null){
         SceneData tData=new SceneData(aName,aArg,aOpened,aClosed);
         mScenes.Add(tData);
-        //SceneManager.LoadSceneAsync(aName, LoadSceneMode.Additive);
-        SceneManager.LoadScene(aName,LoadSceneMode.Additive);
+        SceneManager.LoadSceneAsync(aName, LoadSceneMode.Additive);
+        //SceneManager.LoadScene(aName,LoadSceneMode.Additive);
     }
     ///シーンを閉じる
-    static public void closeScene(string aName,Arg aArg){
+    static public void closeScene(string aName,Arg aArg,Action<Arg> aClosed=null){
         for (int i = 0; i < mScenes.Count;i++){
             SceneData tData = mScenes[i];
             if (tData.name != aName) continue;
             tData.arg = aArg;
+            if (aClosed != null){
+                if (tData.closed != null)
+                    Debug.Log("SceneManager:「" + aName + "」ってシーンを閉じた時のcallbak上書きしちゃった");
+                tData.closed = aClosed;
+            }
             SceneManager.UnloadSceneAsync(aName);
             //SceneManager.UnloadScene(aName);
             return;

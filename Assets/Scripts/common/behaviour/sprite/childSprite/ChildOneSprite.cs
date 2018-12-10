@@ -6,8 +6,8 @@ public class ChildOneSprite : ChildSprite {
     private SpriteRenderer mRenderer;
     public override void initImage(Arg aArg, string aDirectory){
         createChild();
-        int tWidth = (aArg.ContainsKey("width")) ? aArg.get<int>("width") : 1;
-        int tHeight = (aArg.ContainsKey("height")) ? aArg.get<int>("height") : 1;
+        float tWidth = (aArg.ContainsKey("width")) ? aArg.get<float>("width") : 1;
+        float tHeight = (aArg.ContainsKey("height")) ? aArg.get<float>("height") : 1;
         //画像のpivot
         Vector2 tPivot = new Vector2(aArg.ContainsKey("pivotX") ? aArg.get<float>("pivotX") : 0.5f,
                                      aArg.ContainsKey("pivotY") ? (aArg.get<float>("pivotY")) : 0.5f);

@@ -25,9 +25,9 @@
       "x": 0,
       "y": 0,
       "width": 2,
-      "height": 3,
-      "zIndex": 1.65
+      "height": 3
     },
+    "zIndex": 1.65,
     "attribute": "accessory",
     "collider": {
       "colliderType": "block",
@@ -111,6 +111,21 @@
         "width": 1.0,
         "height": 1.2
       }
+    }
+  },
+  "vase": {
+    "sprite": {
+      "file": "vase",
+      "x": 0,
+      "y": 0,
+      "width": 1.5,
+      "height": 1.5
+    },
+    "attribute": "accessory",
+    "collider": {
+      "colliderType": "block",
+      "colliderSizeX": 1.4,
+      "colliderSizeY": 0.7
     }
   }
 }

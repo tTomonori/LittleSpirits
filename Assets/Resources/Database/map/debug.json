@@ -21,7 +21,8 @@
                {"file": "test","name": "fenceLeft","x": 1,"y": 4},
                {"file": "test","name": "fenceCenter","x": 2,"y": 4},
                {"file": "test","name": "fenceRight","x": 3,"y": 4},
-               {"file": "test","name": "house","x": 6,"y": 10,"arg": {}}
+               {"file": "test","name": "house","x": 6,"y": 10,"arg": {}},
+               {"file": "test","name": "vase","x": 6,"y": 2.5}
              ],
   "event": [
     {"x": 9,"y": 1,

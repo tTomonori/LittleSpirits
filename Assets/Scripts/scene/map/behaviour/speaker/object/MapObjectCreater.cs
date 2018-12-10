@@ -25,6 +25,9 @@ public static class MapObjectCreater {
             //スプライトセット
             ChildSprite.addSpriteObject(tMapObject.gameObject, tData, tPath);
         }
+        //zIndex
+        if (tObjectData.ContainsKey("zIndex"))
+            tMapObject.zIndex = tObjectData.get<float>("zIndex");
         //マップ属性
         if(tObjectData.ContainsKey("attribute")){
             tMapObject.gameObject.AddComponent<MapAttributeBehaviour>().setAttribute(tObjectData.get<string>("attribute"));

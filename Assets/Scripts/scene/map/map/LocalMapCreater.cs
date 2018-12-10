@@ -32,9 +32,13 @@ public static class LocalMapCreater {
         GameObject tSpeakers = GameObject.Find("mapSpeakers");
         foreach(Arg tObjectData in tMapData.get<List<Arg>>("object")){
             MapObject tObject = MapObjectCreater.create(tObjectData.get<string>("file"), tObjectData.get<string>("name"));
-            tObject.mapPosition = new Vector2(tObjectData.get<int>("x"), tObjectData.get<int>("y"));
+            tObject.mapPosition = new Vector2(tObjectData.get<float>("x"), tObjectData.get<float>("y"));
+            if (tObjectData.ContainsKey("z"))
+                tObject.zIndex = tObjectData.get<float>("z");
             tObject.transform.parent = tSpeakers.transform;
             tObjects.Add(tObject);
+            //子オブジェクト
+
         }
         LocalMap tMap = new LocalMap(tTrouts, tCharacters, tObjects, new List<MapEventTrigger>());
         //イベント
@@ -42,7 +46,7 @@ public static class LocalMapCreater {
         GameObject tEvents = GameObject.Find("mapEvents");
         foreach (Arg tEventData in tMapData.get<List<Arg>>("event")){
             MapEventTrigger tTrigger = MapEventTriggerCreater.create(tEventData);
-            tTrigger.mapPosition = new Vector2(tEventData.get<int>("x"), tEventData.get<int>("y"));
+            tTrigger.mapPosition = new Vector2(tEventData.get<float>("x"), tEventData.get<float>("y"));
             tTrigger.transform.parent = tEvents.transform;
             tMap.addEventTrigger(tTrigger);
         }

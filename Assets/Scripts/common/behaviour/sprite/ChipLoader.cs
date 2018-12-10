@@ -4,7 +4,7 @@ using UnityEngine;
 
 public static class ChipLoader {
     static private Dictionary<string, Dictionary<string, Sprite>> mSprites=new Dictionary<string, Dictionary<string, Sprite>>();
-    static public Sprite load(string aFileName,int aX,int aY,int aWidht=1,int aHeight=1,Vector2? aPivot=null){
+    static public Sprite load(string aFileName,float aX,float aY,float aWidht=1,float aHeight=1,Vector2? aPivot=null){
         Vector2 tPivot = (aPivot == null) ? new Vector2(0.5f, 0.5f) : (Vector2)aPivot;
         string tKey = aX.ToString() + "," + aY.ToString() + "," + aWidht.ToString() + "," + aHeight.ToString() + "," + tPivot.ToString();
         if (!mSprites.ContainsKey(aFileName)) mSprites[aFileName] = new Dictionary<string, Sprite>();

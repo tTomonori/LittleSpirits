@@ -127,5 +127,20 @@
       "colliderSizeX": 1.4,
       "colliderSizeY": 0.7
     }
+  },
+  "treeSign": {
+    "sprite": {
+      "file": "treeSign",
+      "x": 0,
+      "y": 0,
+      "width": 1,
+      "height": 1
+    },
+    "attribute": "accessory",
+    "collider": {
+      "colliderType": "block",
+      "colliderSizeX": 1.0,
+      "colliderSizeY": 0.2
+    }
   }
 }

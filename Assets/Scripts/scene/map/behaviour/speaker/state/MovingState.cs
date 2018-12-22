@@ -15,6 +15,10 @@ partial class MapCharacter{
             //parent.move(aVector, 0.1f);
             parent.mMoveComponent.move(aVector, 0.1f);
         }
+        //調べる
+        public override void search(){
+            parent.search();
+        }
         public override void update(){
             if(mMoveFlag){
                 mMoveFlag = false;

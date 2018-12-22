@@ -6,6 +6,8 @@
     [3,3,0,0,0,0,0,0,0,0],
     [0,0,0,1,0,0,0,1,0,0],
     [2,2,2,2,2,2,2,2,2,2],
+    [2,2,2,2,2,2,2,2,2,2],
+    [2,2,2,2,2,2,2,2,2,2],
     [2,2,2,2,2,2,2,2,2,2]
   ],
   "chip": {
@@ -21,43 +23,11 @@
                {"file": "test","name": "fenceLeft","x": 1,"y": 4},
                {"file": "test","name": "fenceCenter","x": 2,"y": 4},
                {"file": "test","name": "fenceRight","x": 3,"y": 4},
-               {"file": "test","name": "house","x": 6,"y": 10,"arg": {}},
-               {"file": "test","name": "vase","x": 6,"y": 2.5}
+               {"file": "test","name": "house","x": 6,"y": 10},
+               {"file": "test","name": "vase","x": 6,"y": 2.5, "search": "vase"},
+               {"file": "test","name": "treeSign","x": 1,"y": 7, "search": "sign"}
              ],
   "event": [
-    {"x": 9,"y": 1,
-     "collider": {
-     "colliderType": "box","colliderSizeX": 1,"colliderSizeY": 1
-     },
-     "trigger": {
-       "passType": "passing",
-       "terms": [ { "name": "player" } ]
-     },
-     "destroy": false,
-     "stay": {
-       "jack": ["player"],
-       "events": [
-         {"event": "log","value": "デバッグログ"}
-       ]
-     }
-    },
-    //////////
-    {"x": 6,"y": 0,
-       "collider": {
-         "colliderType": "box","colliderSizeX": 1,"colliderSizeY": 1
-       },
-       "trigger": {
-         "passType": "stop",
-           "terms": [{"name": "player"}]
-       },
-       "destroy": false,
-       "stay": {
-         "jack": ["player"],
-         "events": [
-         {"event": "log","value": "jack"}
-       ]
-      }
-     },
     //////////
     {"x": 0,"y": 6,
      "collider": {
@@ -71,7 +41,7 @@
      "enter": {
        "jack": ["player"],
        "events": [
-         {"event": "text","name": "システム", "text": "テスト 一度だけ表示するよ"}
+         {"event": "text","name": "システム", "text": "zキーで正面を調べられるよ"}
        ]
      }
     },
@@ -98,5 +68,66 @@
         ]
       }
     }
-  ]
+  ],
+  "argument": {
+    "vase": {
+       "event": {
+        "jack": [ "player" ],
+        "events": [
+          {"event": "text","type": "list","list": [
+             {"text": "ベタ塗..."},
+            { "text": "......綺麗な花が飾ってある" }
+           ]}
+        ]
+      }
+    },
+    //////////
+    "sign": {
+       "up": {
+        "jack": [ "player" ],
+        "events": [
+          {"event": "text","type": "list","list": [
+             {"text": "看板の裏にはなんと!?"},
+            { "text": "...何も書いてなかった" }
+           ]}
+        ]
+      },
+      "down": {
+        "jack": [ "player" ],
+        "events": [
+          {
+            "event": "text",
+            "type": "list",
+            "list": [
+              { "text": "ここはデバッグ用のマップだよ" }
+            ]
+          }
+        ]
+      },
+      "left": {
+        "jack": [ "player" ],
+        "events": [
+          {
+            "event": "text",
+            "type": "list",
+            "list": [
+              { "text": "看板の側面に何か書いてあるはずがなかった" }
+            ]
+          }
+        ]
+      },
+      "right": {
+        "jack": [ "player" ],
+        "events": [
+          {
+            "event": "text",
+            "type": "list",
+            "list": [
+              { "text": "看板の側面に何か書いてあるはずがなかった" }
+            ]
+          }
+        ]
+      }
+    }
+  }
 }

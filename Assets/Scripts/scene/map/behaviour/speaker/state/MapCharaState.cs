@@ -16,7 +16,7 @@ partial class MapCharacter{
         //移動
         virtual public void move(Vector2 aVector){}
         //調べる
-        virtual public void investigate(){}
+        virtual public void search(){}
         //メニューを開く
         virtual public void openMenu(){}
     }

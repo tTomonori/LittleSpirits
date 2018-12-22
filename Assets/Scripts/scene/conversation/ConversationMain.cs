@@ -62,4 +62,8 @@ public class ConversationMain : MonoBehaviour {
         if(mNext!=null)
             mNext();
     }
+    private void Update(){
+        if (Input.GetKeyDown(KeyCode.Z))
+            mNext();
+    }
 }

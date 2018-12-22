@@ -10,6 +10,10 @@ partial class MapCharacter{
             parent.changeState(new MovingState(parent));
             parent.mState.move(aVector);
         }
+        //調べる
+        public override void search(){
+            parent.search();
+        }
         public override void enter(){
             parent.changeImage("stand" + parent.mDirection.str);
         }

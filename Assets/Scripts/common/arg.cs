@@ -37,8 +37,9 @@ public struct Arg{
             throw new Exception(arg[key].GetType().ToString() + "型を指定した型にキャストできないよ");
         }
         Arg a = new Arg((IDictionary)arg[key]);
-        arg[key] = a;
-        return (T)arg[key];
+        //arg[key] = a;
+        //return (T)arg[key];
+        return (T)(object)a;
     }
     public bool ContainsKey(string key){
         return arg.Contains(key);

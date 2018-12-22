@@ -37,6 +37,12 @@ public static class LocalMapCreater {
                 tObject.zIndex = tObjectData.get<float>("z");
             tObject.transform.parent = tSpeakers.transform;
             tObjects.Add(tObject);
+            //searchEvent
+            if(tObjectData.ContainsKey("search")){
+                MapSearchedBehaviour tSearched=tObject.gameObject.AddComponent<MapSearchedBehaviour>();
+                Arg tEvent = tMapData.get<Arg>("argument").get<Arg>(tObjectData.get<string>("search"));
+                tSearched.setSearchedEvent(tEvent);
+            }
             //子オブジェクト
 
         }

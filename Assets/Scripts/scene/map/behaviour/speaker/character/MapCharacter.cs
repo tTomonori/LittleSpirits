@@ -47,27 +47,6 @@ public partial class MapCharacter : MapSpeaker {
         //移動コンポーネント
         mMoveComponent = gameObject.AddComponent<MapBehaviourMoveComponent>();
     }
-    ///正面を調べる
-    private void search(){
-        BoxCollider2D tMyCollider = gameObject.GetComponent<BoxCollider2D>();
-        float tCenterX = tMyCollider.bounds.center.x;
-        float tCenterY = tMyCollider.bounds.center.y;
-        switch(mDirection.value){
-            case Direction.direction.Up:tCenterY += 0.5f + tMyCollider.size.y / 2;break;
-            case Direction.direction.Down:tCenterY -= 0.5f + tMyCollider.size.y / 2;break;
-            case Direction.direction.Left:tCenterX -= 0.5f + tMyCollider.size.x / 2;break;
-            case Direction.direction.Right:tCenterX += 0.5f + tMyCollider.size.x / 2;break;
-        }
-        //正面にあるcolliderを取得
-        Collider2D[] tColliders = Physics2D.OverlapBoxAll(new Vector2(tCenterX,tCenterY),
-                                                          new Vector2(tMyCollider.size.x, tMyCollider.size.x), 0);
-        foreach(Collider2D tCollider in tColliders){
-            MapSearchedBehaviour tSearched = tCollider.GetComponent<MapSearchedBehaviour>();
-            if (tSearched == null) continue;
-            tSearched.searched(this);
-            return;
-        }
-    }
     ///画像変更
     private void changeImage(string aName){
         if (mCurrentGifName == aName) return;
@@ -87,7 +66,7 @@ public partial class MapCharacter : MapSpeaker {
 	void Start () {
         mAi = new MapPlayerAi(this);
 	}
-	void FixedUpdate () {
+	void Update() {
         mAi.update();
         mState.update();
 	}

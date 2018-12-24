@@ -17,3 +17,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/window/conversation.unity
     guid: 71e1a9191643e4adda1e6517568069ab
+  - enabled: 1
+    path: Assets/Scenes/map/mapUi.unity
+    guid: 2930e8b26818145879e49aabbe3b1550
+  - enabled: 1
+    path: Assets/Scenes/menu/mainMenu.unity
+    guid: ef3344c225f5546c6b279c4d60544c43

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MyBehaviour : MonoBehaviour {
+public partial class MyBehaviour : MonoBehaviour {
     static private MyBehaviour instance;
     static private MyBehaviour ins{
         get{
@@ -33,6 +33,7 @@ public class MyBehaviour : MonoBehaviour {
     public void delete(){
         Destroy(gameObject);
     }
+    //座標
     public float positionX{
         get { return gameObject.transform.position.x; }
         set {
@@ -53,5 +54,10 @@ public class MyBehaviour : MonoBehaviour {
             Vector3 tPosition = gameObject.transform.position;
             gameObject.transform.position = new Vector3(tPosition.x, tPosition.y, value);
         }
+    }
+    //スケール
+    public Vector3 scale{
+        get { return gameObject.transform.localScale; }
+        set { gameObject.transform.localScale = value; }
     }
 }

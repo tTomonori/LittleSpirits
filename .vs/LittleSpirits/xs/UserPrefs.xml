@@ -1,23 +1,22 @@
 ﻿<Properties StartupConfiguration="{8B06F6C0-BFEB-6300-9B25-A6448910FFF2}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/scene/map/behaviour/speaker/ai/MapPlayerAi.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/scene/map/behaviour/speaker/character/ai/MapPlayerAi.cs">
     <Files>
-      <File FileName="Assets/Scripts/scene/map/event/MapEvent.cs" Line="44" Column="22" />
-      <File FileName="Assets/Resources/Database/map/debug.json" Line="105" Column="16" />
-      <File FileName="Assets/Scripts/scene/map/map/LocalMapCreater.cs" Line="43" Column="104" />
-      <File FileName="Assets/Scripts/common/arg.cs" Line="10" Column="31" />
-      <File FileName="Assets/Scripts/scene/map/behaviour/speaker/state/StandState.cs" Line="8" Column="13" />
-      <File FileName="Assets/Scripts/scene/map/behaviour/speaker/state/MovingState.cs" Line="20" Column="29" />
-      <File FileName="Assets/Scripts/scene/map/behaviour/speaker/ai/MapCharaJackedAi.cs" Line="6" Column="28" />
-      <File FileName="Assets/Scripts/scene/map/behaviour/speaker/ai/MapPlayerAi.cs" Line="15" Column="32" />
-      <File FileName="Assets/Scripts/scene/map/behaviour/speaker/character/MapCharacter.cs" Line="63" Column="109" />
-      <File FileName="Assets/Scripts/scene/map/behaviour/MapBehaviourMoveComponent.cs" Line="63" Column="53" />
-      <File FileName="Assets/Scripts/scene/conversation/ConversationMain.cs" Line="50" Column="55" />
+      <File FileName="Assets/Scripts/common/ui/button/UiButton.cs" Line="12" Column="41" />
+      <File FileName="Assets/Scripts/common/behaviour/MyBehaviour.cs" Line="5" Column="15" />
+      <File FileName="Assets/Scripts/common/behaviour/behaviourAction.cs" Line="23" Column="25" />
+      <File FileName="Assets/Scripts/scene/map/behaviour/speaker/character/MapCharacter.cs" Line="70" Column="1" />
+      <File FileName="Assets/Scripts/common/ui/window/ConversationWindow.cs" Line="32" Column="37" />
+      <File FileName="Assets/Scripts/scene/map/MapUserInput.cs" Line="14" Column="26" />
+      <File FileName="Assets/Scripts/scene/map/behaviour/speaker/character/mapCharacterUserInputOperator.cs" Line="35" Column="1" />
+      <File FileName="Assets/Scripts/scene/menu/MenuMain.cs" Line="19" Column="17" />
+      <File FileName="Assets/Scripts/scene/map/behaviour/speaker/character/ai/MapPlayerAi.cs" Line="19" Column="14" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
       <Breakpoint file="/Users/tomo/Desktop/game/LittleSpirits/Assets/Scripts/common/function/string.cs" relfile="Assets/Scripts/common/function/string.cs" line="5" column="1" />
+      <Breakpoint file="/Users/tomo/Desktop/game/LittleSpirits/Assets/Scripts/scene/map/behaviour/speaker/character/ai/MapPlayerAi.cs" relfile="Assets/Scripts/scene/map/behaviour/speaker/character/ai/MapPlayerAi.cs" line="20" column="1" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.ItemProperties.LittleSpirits PreferredExecutionTarget="Unity.Editor" />

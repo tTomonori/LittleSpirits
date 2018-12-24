@@ -16,6 +16,13 @@ public class MapMain : MonoBehaviour{
         GameObject tCamera = GameObject.Find("MapCamera");
         tCamera.transform.parent = tPlayer.transform;
         tCamera.transform.localPosition = new Vector3(0, 0, -100);
+
+        //ui
+        MySceneManager.openScene("mapUi", new Arg());
+        Subject.addObserver(new Observer("mapUi", (message) =>{
+            if (message.name == "menuButton")
+                Debug.Log("open menu");
+        },"map"));
 	}
 	
 	// Update is called once per frame
